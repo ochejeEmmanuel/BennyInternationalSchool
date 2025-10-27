@@ -1,5 +1,10 @@
 import React from 'react';
 import {Box, Heading, Text, SimpleGrid, Image, VStack} from '@chakra-ui/react';
+import image2 from '../../../assets/Image (2).png';
+import image3 from '../../../assets/Image (3).png';
+import image4 from '../../../assets/Image (4).png';
+import image5 from '../../../assets/Image (5).png';
+
 
 interface GalleryItem {
   title: string;
@@ -11,22 +16,22 @@ const galleryItems: GalleryItem[] = [
   {
     title: "Best graduating student",
     description: "Photos capturing proud moments of academic excellence, award ceremonies, and noteworthy achievements by our students.",
-    imageUrl: ("src/assets/Image (2).png"),
+    imageUrl: image2,
   },
   {
     title: "Best graduating student",
     description: "Photos capturing proud moments of academic excellence, award ceremonies, and noteworthy achievements by our students.",
-    imageUrl: "src/assets/Image (3).png",
+    imageUrl: image3,
   },
   {
     title: "Best graduating student",
     description: "Photos capturing proud moments of academic excellence, award ceremonies, and noteworthy achievements by our students.",
-    imageUrl: "src/assets/Image (4).png",
+    imageUrl: image4,
   },
   {
     title: "Best graduating student",
     description: "Photos capturing proud moments of academic excellence, award ceremonies, and noteworthy achievements by our students.",
-    imageUrl: "src/assets/Image (5).png",
+    imageUrl: image5,
   },
 ];
 
