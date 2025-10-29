@@ -5,13 +5,7 @@ import {
   Flex,
   Heading,
   Text,
-  VStack,
   Image,
-  Avatar,
-  HStack,
-  Divider,
-  IconButton,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { FaTwitter, FaFacebook, FaLinkedin, FaLink } from "react-icons/fa";
 import avatarImage from '../../../assets/Avatar (1).png';
@@ -24,20 +18,16 @@ interface ArticleHeader {
 }
 
 const Practicals: React.FC = () => {
-  const bg = useColorModeValue("white", "gray.900");
-  const textColor = useColorModeValue("gray.700", "gray.300");
-  const sectionBg = useColorModeValue("gray.50", "gray.800");
-
   const articleHeader: ArticleHeader = {
     publishDate: "20 Jan 2022",
     title: "Practicals on making Doughnuts and Fish Pie"
   };
 
   return (
-    <Box bg={bg} minH="100vh" py={{ base: 8, md: 16 }}>
+    <Box bg="white" minH="100vh" py={{ base: 8, md: 16 }}>
       <Box maxW="900px" mx="auto" px={{ base: 4, md: 8 }}>
         {/* ===== Header Section ===== */}
-        <VStack spacing={{ base: 3, md: 4 }} textAlign="center" mb={{ base: 4, md: 6 }}>
+        <Flex direction="column" gap={{ base: 3, md: 4 }} textAlign="center" mb={{ base: 4, md: 6 }}>
           <Text 
             fontSize={{ base: "xs", md: "sm" }} 
             color="blue.500" 
@@ -57,9 +47,9 @@ const Practicals: React.FC = () => {
           >
             {articleHeader.title}
           </Heading>
-        </VStack>
+        </Flex>
 
-        <Divider my={{ base: 3, md: 4 }} />
+        <Box h="1px" bg="gray.200" my={{ base: 3, md: 4 }} />
 
         {/* ===== Author Section ===== */}
         <Flex 
@@ -69,15 +59,23 @@ const Practicals: React.FC = () => {
           gap={4}
           mb={6}
         >
-          <HStack spacing={3}>
-            <Avatar size="md" name="Olivia Rhye" src={avatarImage} />
-            <VStack align="start" spacing={0}>
+          <Flex gap={3} align="center">
+            <Box
+              w="48px"
+              h="48px"
+              borderRadius="full"
+              overflow="hidden"
+              flexShrink={0}
+            >
+              <Image src={avatarImage} alt="Olivia Rhye" w="100%" h="100%" objectFit="cover" />
+            </Box>
+            <Box>
               <Text fontWeight="medium">Olivia Rhye</Text>
               <Text fontSize="sm" color="gray.500">
                 20 Jan 2022
               </Text>
-            </VStack>
-          </HStack>
+            </Box>
+          </Flex>
 
           <Flex 
             wrap="wrap" 
@@ -85,31 +83,39 @@ const Practicals: React.FC = () => {
             display={{ base: "none", md: "flex" }}
           >
             <Button
-              leftIcon={<FaLink />}
               size="sm"
               variant="outline"
               aria-label="Copy link"
             >
-              Copy link
+              <Flex align="center" gap={2}>
+                <FaLink />
+                <Text>Copy link</Text>
+              </Flex>
             </Button>
-            <IconButton
+            <Button
               aria-label="Share on Twitter"
-              icon={<FaTwitter />}
               size="sm"
               variant="outline"
-            />
-            <IconButton
+              px={2}
+            >
+              <FaTwitter />
+            </Button>
+            <Button
               aria-label="Share on Facebook"
-              icon={<FaFacebook />}
               size="sm"
               variant="outline"
-            />
-            <IconButton
+              px={2}
+            >
+              <FaFacebook />
+            </Button>
+            <Button
               aria-label="Share on LinkedIn"
-              icon={<FaLinkedin />}
               size="sm"
               variant="outline"
-            />
+              px={2}
+            >
+              <FaLinkedin />
+            </Button>
           </Flex>
         </Flex>
 
@@ -133,14 +139,14 @@ const Practicals: React.FC = () => {
         </Box>
 
         {/* ===== Introduction ===== */}
-        <VStack align="start" spacing={4} mb={10}>
+        <Flex direction="column" gap={4} mb={10}>
           <Heading as="h2" fontSize="2xl">
             Introduction
           </Heading>
-          <Text color={textColor}>
+          <Text color="gray.700">
            Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.
           </Text>
-          <Text color={textColor}>
+          <Text color="gray.700">
             get quis mi enim, leo lacinia pharetra, semper. Eget in <u>volutpat mollis</u> at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit <u>tristique risus,</u> at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat. 
           </Text>
 
@@ -154,27 +160,27 @@ const Practicals: React.FC = () => {
             my={4}
           />
 
-          <Text color={textColor}>
+          <Text color="gray.700">
            olor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada fringilla.
           </Text>
-          <Text color={textColor}>
+          <Text color="gray.700">
             Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis risus. Sed condimentum enim dignissim adipiscing faucibus consequat, urna. Viverra purus et erat auctor aliquam. Risus, volutpat vulputate posuere purus sit congue convallis aliquet. Arcu id augue ut feugiat donec porttitor neque. Mauris, neque ultricies eu vestibulum, bibendum quam lorem id. Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.
           </Text>
-          <Text color={textColor}>
+          <Text color="gray.700">
             Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque congue eget consectetur turpis. Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.
           </Text>
-        </VStack>
+        </Flex>
 
         
-        <VStack align="start" spacing={4} mb={10}>
+        <Flex direction="column" gap={4} mb={10}>
           <Heading as="h2" fontSize="2xl">
             Other resources
           </Heading>
-          <Text color={textColor}>
+          <Text color="gray.700">
           Sagittis et eu at elementum, quis in. Proin praesent volutpat egestas sociis sit lorem nunc nunc sit. Eget diam curabitur mi ac. Auctor rutrum lacus malesuada massa ornare et. Vulputate consectetur ac ultrices at diam dui eget fringilla tincidunt. Arcu sit dignissim massa erat cursus vulputate gravida id. Sed quis auctor vulputate hac elementum gravida cursus dis.
           </Text>
 
-          <Box as="ol" pl={6} color={textColor}>
+          <Box as="ol" pl={6} color="gray.700">
             <li>
               Lectus id duis vitae porttitor <u>enim gravida morbi</u>
             </li>
@@ -186,29 +192,29 @@ const Practicals: React.FC = () => {
             </li>
           </Box>
 
-          <Text color={textColor} mb={4}>
+          <Text color="gray.700" mb={4}>
             Lectus leo massa amet posuere. Malesuada mattis non convallis quisque. Libero sit et imperdiet bibendum quisque dictum vestibulum in non. Pretium ultricies tempor non est diam. Enim ut enim amet amet integer cursus. Sit ac commodo pretium sed etiam turpis suspendisse at.
             </Text>
-            <Text color={textColor}>
+            <Text color="gray.700">
 Tristique odio senectus nam posuere ornare leo metus, ultricies. Blandit duis ultricies vulputate morbi feugiat cras placerat elit. Aliquam tellus lorem sed ac. Montes, sed mattis pellentesque suscipit accumsan. Cursus viverra aenean magna risus elementum faucibus molestie pellentesque. Arcu ultricies sed mauris vestibulum.
           </Text>
-        </VStack>
+        </Flex>
 
         {/* ===== Conclusion Section ===== */}
-        <Box bg={sectionBg} p={8} borderRadius="lg" mb={10}>
+        <Box bg="gray.50" p={8} borderRadius="lg" mb={10}>
           <Heading as="h2" fontSize="2xl" mb={4}>
             Conclusion
           </Heading>
-          <Text color={textColor} mb={4}>
+          <Text color="gray.700" mb={4}>
             Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id scelerisque est ultricies ultricies. Duis est sit sed leo nisl, blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at scelerisque amet nulla purus habitasse.
           </Text>
-          <Text color={textColor} mb={4}>
+          <Text color="gray.700" mb={4}>
             Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas condimentum mi massa. In tincidunt pharetra consectetur sed duis facilisis metus. Etiam egestas in nec sed et. Quis lobortis at sit dictum eget nibh tortor commodo cursus.
           </Text>
-          <Text color={textColor} mb={4}>
+          <Text color="gray.700" mb={4}>
             Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce aliquet. Nam elementum urna nisi aliquet erat dolor enim. Ornare id morbi eget ipsum. Aliquam senectus neque ut id eget consectetur dictum. Donec posuere pharetra odio consequat scelerisque et, nunc tortor
           </Text>
-          <Text color={textColor}>
+          <Text color="gray.700">
            Nulla adipiscing erat a erat. Condimentum lorem posuere gravida enim posuere cursus diam.
           </Text>
         </Box>
@@ -219,46 +225,62 @@ Tristique odio senectus nam posuere ornare leo metus, ultricies. Blandit duis ul
           align={{ base: "start", md: "center" }}
           gap={4}
         >
-          <HStack spacing={3}>
-            <Avatar size="md" name="Olivia Rhye" src={avatarImage} />
-            <VStack align="start" spacing={0}>
+          <Flex gap={3} align="center">
+            <Box
+              w="48px"
+              h="48px"
+              borderRadius="full"
+              overflow="hidden"
+              flexShrink={0}
+            >
+              <Image src={avatarImage} alt="Olivia Rhye" w="100%" h="100%" objectFit="cover" />
+            </Box>
+            <Box>
               <Text fontWeight="medium">Olivia Rhye</Text>
               <Text fontSize="sm" color="gray.500">
                 Head Teacher, Home Economics
               </Text>
-            </VStack>
-          </HStack>
+            </Box>
+          </Flex>
 
           <Flex 
             wrap="wrap" 
             gap={2}
           >
             <Button
-              leftIcon={<FaLink />}
               size="sm"
               variant="outline"
               aria-label="Copy link"
             >
-              Copy link
+              <Flex align="center" gap={2}>
+                <FaLink />
+                <Text>Copy link</Text>
+              </Flex>
             </Button>
-            <IconButton
+            <Button
               aria-label="Share on Twitter"
-              icon={<FaTwitter />}
               size="sm"
               variant="outline"
-            />
-            <IconButton
+              px={2}
+            >
+              <FaTwitter />
+            </Button>
+            <Button
               aria-label="Share on Facebook"
-              icon={<FaFacebook />}
               size="sm"
               variant="outline"
-            />
-            <IconButton
+              px={2}
+            >
+              <FaFacebook />
+            </Button>
+            <Button
               aria-label="Share on LinkedIn"
-              icon={<FaLinkedin />}
               size="sm"
               variant="outline"
-            />
+              px={2}
+            >
+              <FaLinkedin />
+            </Button>
           </Flex>
         </Flex>
       </Box>

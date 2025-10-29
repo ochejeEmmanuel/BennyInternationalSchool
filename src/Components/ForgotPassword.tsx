@@ -3,20 +3,17 @@ import {
   Box,
   Flex,
   Image,
-  VStack,
   Heading,
-  FormControl,
-  FormLabel,
   Input,
   Button,
   Link,
-  Alert,
-  AlertIcon,
   Text,
 } from "@chakra-ui/react";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { BiError } from "react-icons/bi";
 import { Link as RouterLink } from "react-router-dom";
+import loadingIcon from '../assets/45.svg';
+import schoolImage from '../assets/welcome_md.jpeg';
 
 
 export default function ForgotPassword() {
@@ -33,7 +30,7 @@ export default function ForgotPassword() {
     return (
       <Flex align="center" justify="center" height="100vh" bg="white">
         <Image
-          src="src/assets/45.svg"
+          src={loadingIcon}
           alt="Loading..."
           boxSize="50px"
         />
@@ -59,7 +56,7 @@ export default function ForgotPassword() {
       {/* Left Section - Image */}
       <Box flex="1" position="relative" h={{ base: "40vh", md: "100vh" }}>
         <Image
-          src="src/assets/welcome_md.jpeg"
+          src={schoolImage}
           alt="School"
           objectFit="cover"
           w="100%"
@@ -85,7 +82,7 @@ export default function ForgotPassword() {
         bg="white"
       >
         <Box w="full" maxW="md">
-          <VStack spacing={6} align="stretch">
+          <Flex direction="column" gap={6} align="stretch">
             {/* Title */}
             <Heading
               color="blue.700"
@@ -96,21 +93,29 @@ export default function ForgotPassword() {
               Reset Password
             </Heading>
 
-            {/* 🔶 Error Alert (shows when no email is entered) */}
+            {/* Error Alert (shows when no email is entered) */}
             {error && (
-              <Alert status="warning" borderRadius="md">
-                <AlertIcon as={BiError} />
-                <Text color="orange.700" fontWeight="medium">
-                  {error}
-                </Text>
-              </Alert>
+              <Box
+                bg="orange.50"
+                border="1px solid"
+                borderColor="orange.200"
+                borderRadius="md"
+                p={4}
+              >
+                <Flex align="center" gap={2}>
+                  <BiError color="#C05621" size={20} />
+                  <Text color="orange.700" fontWeight="medium">
+                    {error}
+                  </Text>
+                </Flex>
+              </Box>
             )}
 
             {/* Reset Form */}
             <Box as="form" mt={2}>
-              <VStack spacing={5}>
-                <FormControl id="email">
-                  <FormLabel>Email</FormLabel>
+              <Flex direction="column" gap={5}>
+                <Box>
+                  <Text mb={2} fontWeight="medium" fontSize="sm">Email</Text>
                   <Input
                     size="lg"
                     type="email"
@@ -118,7 +123,7 @@ export default function ForgotPassword() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                </FormControl>
+                </Box>
 
                 <Button
                   colorScheme="blue"
@@ -138,7 +143,7 @@ export default function ForgotPassword() {
                   gap={1}
                   mt={10}
                 >
-                  <IoArrowBackOutline color="blue.600" />
+                  <IoArrowBackOutline color="#2B6CB0" />
                   <Link
                     as={RouterLink}
                     to="/login"
@@ -152,9 +157,9 @@ export default function ForgotPassword() {
                     Back to Login
                   </Link>
                 </Flex>
-              </VStack>
+              </Flex>
             </Box>
-          </VStack>
+          </Flex>
         </Box>
       </Flex>
     </Flex>

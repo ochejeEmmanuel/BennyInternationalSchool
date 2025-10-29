@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Heading, Text, SimpleGrid, Image, VStack} from '@chakra-ui/react';
+import {Box, Heading, Text, Grid, Image, Flex} from '@chakra-ui/react';
 import image2 from '../../../assets/Image (2).png';
 import image3 from '../../../assets/Image (3).png';
 import image4 from '../../../assets/Image (4).png';
@@ -67,11 +67,11 @@ const GalleryCard: React.FC<GalleryItem> = ({ title, description, imageUrl }) =>
 );
 
 
-const App: React.FC = () => {
+const Achievements: React.FC = () => {
   return (
     <Box py={{ base: 10, lg: 10 }}>
 
-      <VStack align="start" spacing={2} mb={10} mx={{base: 5, lg: 20}}> 
+      <Flex direction="column" gap={2} mb={10} mx={{base: 5, lg: 20}}> 
         <Text fontSize="md" color="blue.500" fontWeight="semibold" mb={4}>
           Gallery
         </Text>
@@ -94,12 +94,13 @@ const App: React.FC = () => {
         >
          Photos capturing proud moments of academic excellence, award ceremonies, and noteworthy achievements by our students.
         </Text>
-      </VStack>
+      </Flex>
 
       {/* Gallery Grid */}
-      <SimpleGrid 
-        columns={{ base: 1, lg: 2 }}
-        spacing={8} mx={{base: 5, lg: 20}}
+      <Grid 
+        templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+        gap={8} 
+        mx={{base: 5, lg: 20}}
       >
         {galleryItems.map((item, index) => (
           <GalleryCard 
@@ -109,9 +110,9 @@ const App: React.FC = () => {
             imageUrl={item.imageUrl} 
           />
         ))}
-      </SimpleGrid>
+      </Grid>
     </Box>
   );
 };
 
-export default App;
+export default Achievements;

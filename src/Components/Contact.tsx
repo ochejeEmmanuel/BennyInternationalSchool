@@ -1,4 +1,5 @@
-import { Image, Flex, Box, Heading, Text, Input, FormControl, FormLabel, Stack, HStack, Button, Textarea } from "@chakra-ui/react"
+import { Image, Flex, Box, Heading, Text, Input, Stack, HStack, Button, Textarea } from "@chakra-ui/react"
+import contactImage from '../assets/Card (1).png'
 
 const Contact = () => {
   return (
@@ -18,36 +19,36 @@ const Contact = () => {
             Our friendly team would love to hear from you
           </Text>
         </Box>
-        <Stack spacing={4} align="stretch">
+        <Stack gap={4} align="stretch">
           {/* First Name and Last Name side by side on larger screens, stacked on mobile */}
-          <HStack spacing={4} flexWrap="wrap" justify="space-between" flexDir={{ base: "column", md: "row" }}>
-            <FormControl id="firstName" flex={1}>
-              <FormLabel>First Name</FormLabel>
+          <HStack gap={4} flexWrap="wrap" justify="space-between" flexDir={{ base: "column", md: "row" }}>
+            <Box flex={1}>
+              <Text mb={2} fontWeight="medium" fontSize="sm">First Name</Text>
               <Input placeholder="First name" height="44px" />
-            </FormControl>
-            <FormControl id="lastName" flex={1}>
-              <FormLabel>Last Name</FormLabel>
+            </Box>
+            <Box flex={1}>
+              <Text mb={2} fontWeight="medium" fontSize="sm">Last Name</Text>
               <Input placeholder="Last name" height="44px" />
-            </FormControl>
+            </Box>
           </HStack>
 
           {/* Email */}
-          <FormControl id="email">
-            <FormLabel>Email</FormLabel>
+          <Box>
+            <Text mb={2} fontWeight="medium" fontSize="sm">Email</Text>
             <Input placeholder="you@company.com" height="44px" />
-          </FormControl>
+          </Box>
 
           {/* Phone number */}
-          <FormControl id="phone">
-            <FormLabel>Phone Number</FormLabel>
+          <Box>
+            <Text mb={2} fontWeight="medium" fontSize="sm">Phone Number</Text>
             <Input placeholder="NGN +234-000-0000" height="44px" />
-          </FormControl>
+          </Box>
 
           {/* Message textarea */}
-          <FormControl id="message">
-            <FormLabel>Message</FormLabel>
+          <Box>
+            <Text mb={2} fontWeight="medium" fontSize="sm">Message</Text>
             <Textarea placeholder="Leave us a message..." rows={4} height="134px" resize="none" />
-          </FormControl>
+          </Box>
 
           {/* Send message button */}
           <Button
@@ -68,7 +69,7 @@ const Contact = () => {
         mt={{ base: "2em", md: 0 }} 
         display={{ base: "none", md: "block" }}
       >
-        <Image src={"src/assets/Card (1).png"} w="100%" h="45em" objectFit="contain" />
+        <Image src={contactImage} w="100%" h="45em" objectFit="contain" />
       </Box>
     </Flex>
   );

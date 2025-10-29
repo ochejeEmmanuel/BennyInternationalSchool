@@ -1,5 +1,8 @@
 import { Box, Grid, Image, Heading, Text, Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import cardImage from '../../assets/Image.png';
+import decorativeGroup from '../../assets/Group 1.png';
+
 const cards = [
   {
     title: "Academic Achievements",
@@ -62,7 +65,7 @@ export default function Gallery() {
                   >
                     <Box position="relative" w="100%" pb="56.25%">
                       <Image
-                        src="src/assets/Image.png"
+                        src={cardImage}
                         alt={card.title}
                         position="absolute"
                         top={0}
@@ -70,7 +73,7 @@ export default function Gallery() {
                         w="100%"
                         h="100%"
                         objectFit="cover"
-                        borderRadius={"lg"}
+                        borderRadius="lg"
                       />
                     </Box>
                     <Box pt={5}>
@@ -93,7 +96,7 @@ export default function Gallery() {
                 >
                   <Box position="relative" w="100%" pb="56.25%">
                     <Image
-                      src="/src/assets/Image.png"
+                      src={cardImage}
                       alt={card.title}
                       position="absolute"
                       top={0}
@@ -118,10 +121,9 @@ export default function Gallery() {
           ))}
         </Grid>
 
-
         
         <Image
-          src="src/assets/Group 1.png"
+          src={decorativeGroup}
           alt="Decorative group"
           display={{ base: "none", lg: "block" }}
           position="absolute"

@@ -1,28 +1,18 @@
 import React from "react";
 import {
   Box,
-  InputGroup,
-  InputLeftElement,
   Input,
   Flex,
   Grid,
   Image,
-  VStack,
-  HStack,
-  Avatar,
-  Select,
   Heading,
   Text,
   Button,
-  useColorModeValue,
 } from "@chakra-ui/react";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  SearchIcon,
-  ChevronDownIcon,
-} from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { FiChevronLeft, FiChevronRight, FiSearch, FiChevronDown } from "react-icons/fi";
+import blogImage from '../../assets/Image.png';
+import avatarImage from '../../assets/Avatar.png';
 
 interface BlogPost {
   id: number;
@@ -33,24 +23,20 @@ interface BlogPost {
   date: string;
 }
 
-
 const blogPosts: BlogPost[] = Array.from({ length: 12 }).map((_, i) => ({
   id: i + 1,
   title: "Practicals on making Doughnuts and Fish Pie",
   description:
     "Like to know the secrets of transforming a 2-14 team into a 3x Super Bowl winning Dynasty?",
-  image: "/src/assets/Image.png",
+  image: blogImage,
   author: "Alec Whitten",
   date: "17 Jan 2022",
 }));
 
-
 const BlogCard: React.FC<{ post: BlogPost }> = ({ post }) => {
-  const cardBg = useColorModeValue("white", "gray.800");
-
   return (
     <Box
-      bg={cardBg}
+      bg="white"
       borderRadius="2xl"
       overflow="hidden"
       boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
@@ -86,28 +72,33 @@ const BlogCard: React.FC<{ post: BlogPost }> = ({ post }) => {
           {post.description}
         </Text>
 
-        <HStack spacing={3}>
-          <Avatar size="sm" name={post.author} src="/src/assets/Avatar.png" />
-          <VStack align="start" spacing={0}>
+        <Flex gap={3} align="center">
+          <Box
+            w="40px"
+            h="40px"
+            borderRadius="full"
+            overflow="hidden"
+            flexShrink={0}
+          >
+            <Image src={avatarImage} alt={post.author} w="100%" h="100%" objectFit="cover" />
+          </Box>
+          <Box>
             <Text fontWeight="medium" fontSize="sm">
               {post.author}
             </Text>
             <Text fontSize="xs" color="gray.500">
               {post.date}
             </Text>
-          </VStack>
-        </HStack>
+          </Box>
+        </Flex>
       </Box>
     </Box>
   );
 };
 
-
 const Blog: React.FC = () => {
-  const bgColor = useColorModeValue("gray.50", "gray.900");
-
   return (
-    <Box bg={bgColor} minH="100vh" py={16}>
+    <Box bg="gray.50" minH="100vh" py={16}>
       {/* ===== Header Section ===== */}
       <Box maxW="1200px" mx="auto" px={{ base: 4, md: 8 }} mb={{ base: 10, md: 16 }}>
         <Flex direction="column" align={{ base: "stretch", md: "flex-start" }} gap={3}>
@@ -136,7 +127,6 @@ const Blog: React.FC = () => {
               border="1px solid"
               borderColor="gray.200"
               maxW={{ base: "100%", sm: "300px" }}
-              _focus={{ borderColor: "gray.400", boxShadow: "sm" }}
               h={{ base: "40px", md: "44px" }}
               fontSize={{ base: "sm", md: "md" }}
             />
@@ -165,36 +155,58 @@ const Blog: React.FC = () => {
           w="100%"
         >
           {/* Search Bar */}
-          <InputGroup maxW={{ base: "100%", md: "320px" }}>
-            <InputLeftElement pointerEvents="none">
-              <SearchIcon color="gray.400" />
-            </InputLeftElement>
+          <Box position="relative" maxW={{ base: "100%", md: "320px" }}>
+            <Box
+              position="absolute"
+              left="12px"
+              top="50%"
+              transform="translateY(-50%)"
+              pointerEvents="none"
+              color="gray.400"
+            >
+              <FiSearch />
+            </Box>
             <Input
               placeholder="Search articles..."
               bg="white"
               borderRadius="md"
               border="1px solid"
               borderColor="gray.200"
-              _focus={{ borderColor: "gray.400", boxShadow: "sm" }}
               fontSize={{ base: "sm", md: "md" }}
+              pl="40px"
             />
-          </InputGroup>
+          </Box>
 
           {/* Filter Dropdown */}
-          <Select
-            maxW={{ base: "100%", md: "200px" }}
-            icon={<ChevronDownIcon />}
-            defaultValue="newest"
-            bg="white"
-            borderRadius="md"
-            border="1px solid"
-            borderColor="gray.200"
-            _focus={{ borderColor: "gray.400", boxShadow: "sm" }}
-            fontSize={{ base: "sm", md: "md" }}
-          >
-            <option value="newest">Newest first</option>
-            <option value="oldest">Oldest first</option>
-          </Select>
+          <Box position="relative" maxW={{ base: "100%", md: "200px" }}>
+            <select
+              defaultValue="newest"
+              style={{
+                width: "100%",
+                height: "44px",
+                padding: "0 40px 0 12px",
+                backgroundColor: "white",
+                border: "1px solid #E2E8F0",
+                borderRadius: "6px",
+                fontSize: "14px",
+                appearance: "none",
+                cursor: "pointer"
+              }}
+            >
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+            <Box
+              position="absolute"
+              right="12px"
+              top="50%"
+              transform="translateY(-50%)"
+              pointerEvents="none"
+              color="gray.400"
+            >
+              <FiChevronDown />
+            </Box>
+          </Box>
         </Flex>
 
         {/* ===== Blog Grid ===== */}
@@ -218,13 +230,15 @@ const Blog: React.FC = () => {
           gap={4}
         >
           <Button
-            leftIcon={<ChevronLeftIcon />}
             variant="outline"
             borderColor="gray.300"
             borderRadius="lg"
             size={{ base: "sm", md: "md" }}
           >
-            Previous
+            <Flex align="center" gap={2}>
+              <FiChevronLeft />
+              <Text>Previous</Text>
+            </Flex>
           </Button>
 
           <Text 
@@ -236,13 +250,15 @@ const Blog: React.FC = () => {
           </Text>
 
           <Button
-            rightIcon={<ChevronRightIcon />}
             variant="outline"
             borderColor="gray.300"
             borderRadius="lg"
             size={{ base: "sm", md: "md" }}
           >
-            Next
+            <Flex align="center" gap={2}>
+              <Text>Next</Text>
+              <FiChevronRight />
+            </Flex>
           </Button>
         </Flex>
       </Box>

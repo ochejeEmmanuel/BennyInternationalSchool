@@ -1,4 +1,14 @@
 import { Box, Flex, Heading, Text, Image, Stack } from "@chakra-ui/react";
+import vision from '../assets/vision.jpg';
+import mission from '../assets/mission 1.jpg';
+import shape1 from '../assets/Shape (1).png';
+import shape2 from '../assets/Shape.png';
+import shape3 from '../assets/Shape (2).png';
+import shape4 from '../assets/Shape (3).png';
+import missionImg from '../assets/mission.jpg';
+import chesseImg from '../assets/chesse.jpg';
+import labImg from '../assets/lab.jpg';
+import libraryImg from '../assets/libray.jpg';
 
 const About = () => {
   return (
@@ -44,7 +54,7 @@ const About = () => {
 
           <Stack
             direction={{ base: "column", md: "row" }}
-            spacing={{ base: 8, md: 12 }}
+            gap={{ base: 8, md: 12 }}
             color="rgba(102, 112, 133, 1)"
           >
             <Text flex="1">
@@ -82,14 +92,13 @@ const About = () => {
             w="1109px"
             h="2px"
             bg="gray.400"
-          // filter="blur(0.9px)"
-          filter="brightness(120%)" 
+            filter="brightness(120%)" 
           />
           <Box position="absolute" top="0" right="10px" opacity={0.9}>
-            <Image src="src/assets/Shape (1).png" alt="Blue shape" w="35px" />
+            <Image src={shape1} alt="Blue shape" w="35px" />
           </Box>
           <Box position="absolute" top="80px" right="8px" opacity={0.8}>
-            <Image src="src/assets/Shape.png" alt="Green shape" w="100px" />
+            <Image src={shape2} alt="Green shape" w="100px" />
           </Box>
         </Box>
 
@@ -108,7 +117,7 @@ const About = () => {
 
           <Stack
             direction={{ base: "column", md: "row" }}
-            spacing={{ base: 8, md: 10 }}
+            gap={{ base: 8, md: 10 }}
             justify="center"
             align="center"
           >
@@ -124,9 +133,9 @@ const About = () => {
               <Box
                 position="absolute"
                 inset="0"
-                bgImage="url('src/assets/vision.jpg')"
-                bgSize="cover"
-                bgPosition="center"
+                backgroundImage={`url(${vision})`}
+                backgroundSize="cover"
+                backgroundPosition="center"
                 filter="brightness(0.8)"
               />
               <Box
@@ -162,9 +171,9 @@ const About = () => {
               <Box
                 position="absolute"
                 inset="0"
-                bgImage="url('src/assets/mission 1.jpg')"
-                bgSize="cover"
-                bgPosition="center"
+                backgroundImage={`url(${mission})`}
+                backgroundSize="cover"
+                backgroundPosition="center"
                 filter="brightness(0.8)"
               />
               <Box
@@ -212,7 +221,7 @@ const About = () => {
                 zIndex={3}
               >
                 <Image
-                  src="src/assets/Shape (2).png"
+                  src={shape3}
                   alt="Blue shape"
                   w="60px"
                 />
@@ -227,7 +236,7 @@ const About = () => {
                 zIndex={3}
               >
                 <Image
-                  src="src/assets/Shape (3).png"
+                  src={shape4}
                   alt="Green shape"
                   w="80px"
                 />
@@ -244,104 +253,61 @@ const About = () => {
             </Heading>
           </Flex>
 
-          {/* -------- ACHIEVEMENTS -------- */}
-<Box
-  px={{ base: "1.5em", md: "6em" }}
-  mt={{ base: 12, md: 20 }}
-  // textAlign="center"
->
-  {/* Heading + Decorative Shapes
-  <Flex
-    align="center"
-    justify="center"
-    mb={8}
-    position="relative"
-    gap={4}
-  >
-    {/* Decorative shapes (hidden on mobile) */}
-    {/* <Box */}
-      {/* position="relative"
-      w="100px"
-      h="100px"
-      display={{ base: "none", md: "block" }}
-    > */}
-      {/* Blue shape */}
-      {/* <Box position="absolute" left="30px" top="0" opacity={0.9} zIndex={3}>
-        <Image src="src/assets/Shape (2).png" alt="Blue shape" w="60px" />
-      </Box>
-
-      {/* Green shape */}
-      {/* <Box position="absolute" left="26px" top="80px" opacity={0.8} zIndex={3}>
-        <Image src="src/assets/Shape (3).png" alt="Green shape" w="80px" />
-      </Box>
-    </Box> */} 
-
-    {/* Heading — centered */}
-    {/* <Heading
-      color="rgba(16, 24, 40, 1)"
-      fontSize={{ base: "2xl", md: "3xl" }}
-    >
-      Our Achievements
-    </Heading>
-  </Flex> */} 
-
-  {/* Achievement Cards */}
-  <Flex
-    direction={{ base: "column", md: "row" }}
-    justify="center"
-    align="center"
-    gap={{ base: 8, md: 6 }}
-    flexWrap="nowrap"       // 🔥 keeps all cards on one straight line on desktop
-    overflowX={{ base: "auto", md: "visible" }} // allows horizontal scroll on mobile if needed
-    mx="auto"
-    maxW="1200px"
-  >
-    {[
-      { year: "2018", text: "Best Standard School", img: "mission.jpg" },
-      { year: "2016", text: "Shell/NNPC Joint Science Competition – 1st Position", img: "chesse.jpg" },
-      { year: "2015", text: "NTA 2nd Edition Senior Science Quiz Competition", img: "lab.jpg" },
-      { year: "2011", text: "Award Macmillan to Team Success", img: "libray.jpg" },
-    ].map((item, index) => (
-      <Box
-        key={index}
-        position="relative"
-        w={{ base: "90%", md: "280px" }}
-        h="380px"
-        borderRadius="20px"
-        overflow="hidden"
-        flexShrink={0}       // 🔥 ensures equal width and straight alignment
-      >
-        <Box
-          position="absolute"
-          inset="0"
-          bgImage={`url('src/assets/${item.img}')`}
-          bgSize="cover"
-          bgPosition="center"
-        />
-        <Box
-          position="absolute"
-          bottom="6"
-          left="50%"
-          transform="translateX(-50%)"
-          w="85%"
-          bg="rgba(255,255,255,0.2)"
-          backdropFilter="blur(6px)"
-          border="1px solid rgba(255,255,255,0.3)"
-          borderRadius="12px"
-          p={4}
-        >
-          <Heading as="h2" size="lg" mb={2} color="white">
-            {item.year}
-          </Heading>
-          <Text fontSize="md" color="white">
-            {item.text}
-          </Text>
-        </Box>
-      </Box>
-    ))}
-  </Flex>
-</Box>
-
+          {/* Achievement Cards */}
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            justify="center"
+            align="center"
+            gap={{ base: 8, md: 6 }}
+            flexWrap="nowrap"
+            overflowX={{ base: "auto", md: "visible" }}
+            mx="auto"
+            maxW="1200px"
+          >
+            {[
+              { year: "2018", text: "Best Standard School", img: missionImg },
+              { year: "2016", text: "Shell/NNPC Joint Science Competition – 1st Position", img: chesseImg },
+              { year: "2015", text: "NTA 2nd Edition Senior Science Quiz Competition", img: labImg },
+              { year: "2011", text: "Award Macmillan to Team Success", img: libraryImg },
+            ].map((item, index) => (
+              <Box
+                key={index}
+                position="relative"
+                w={{ base: "90%", md: "280px" }}
+                h="380px"
+                borderRadius="20px"
+                overflow="hidden"
+                flexShrink={0}
+              >
+                <Box
+                  position="absolute"
+                  inset="0"
+                  backgroundImage={`url(${item.img})`}
+                  backgroundSize="cover"
+                  backgroundPosition="center"
+                />
+                <Box
+                  position="absolute"
+                  bottom="6"
+                  left="50%"
+                  transform="translateX(-50%)"
+                  w="85%"
+                  bg="rgba(255,255,255,0.2)"
+                  backdropFilter="blur(6px)"
+                  border="1px solid rgba(255,255,255,0.3)"
+                  borderRadius="12px"
+                  p={4}
+                >
+                  <Heading as="h2" size="lg" mb={2} color="white">
+                    {item.year}
+                  </Heading>
+                  <Text fontSize="md" color="white">
+                    {item.text}
+                  </Text>
+                </Box>
+              </Box>
+            ))}
+          </Flex>
         </Box>
       </Box>
     </>
